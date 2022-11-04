@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<th:block th:replace="layout/header :: headerFragment"/>
+<body>
+  <div class="title">도감 모음</div>
+  <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-6" th:each="category:${categories}">
+          <a th:href="@{/{category}(category=${category.name})}" th:text="${category.desc}"></a>
+        </div>
+      </div>
+  </div>
+</body>
+<th:block th:replace="layout/footer :: footerFragment"/>
+</html>

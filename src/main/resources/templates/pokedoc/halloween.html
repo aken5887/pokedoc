@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<th:block th:replace="layout/header :: headerFragment"/>
+<body onload="javascript:toggleImage();">
+  <input type="hidden" id="code" name="code" th:value="${code}"/>
+  <div class="title">포켓몬스터 2022 띠부띠부씰 도감 - 할로윈</div>
+  <div class="btnDiv">
+    <div class="checkCnt">(<span id="cnt">0</span>/27)</div>
+    <input type="button" id="reverseBtn" value="선택반전"/>
+    <input type="button" id="saveBtn" onclick="javascript:saveSticker();" value="저장하기"/>
+  </div>
+  <div id="imageDiv">
+    <div class="image poke08 img201"><div></div></div>
+    <div class="image poke08 img202"><div></div></div>
+    <div class="image poke08 img203"><div></div></div>
+    <div class="image poke08 img204"><div></div></div>
+    <div class="image poke08 img205"><div></div></div>
+    <div class="image poke08 img206"><div></div></div>
+    <div class="image poke08 img207"><div></div></div>
+    <div class="image poke08 img301"><div></div></div>
+    <div class="image poke08 img302"><div></div></div>
+    <div class="image poke08 img303"><div></div></div>
+    <div class="image poke08 img304"><div></div></div>
+    <div class="image poke08 img305"><div></div></div>
+    <div class="image poke08 img306"><div></div></div>
+    <div class="image poke08 img307"><div></div></div>
+    <div class="image poke08 img401"><div></div></div>
+    <div class="image poke08 img402"><div></div></div>
+    <div class="image poke08 img403"><div></div></div>
+    <div class="image poke08 img404"><div></div></div>
+    <div class="image poke08 img405"><div></div></div>
+    <div class="image poke08 img406"><div></div></div>
+    <div class="image poke08 img407"><div></div></div>
+    <div class="image poke08 img501"><div></div></div>
+    <div class="image poke08 img502"><div></div></div>
+    <div class="image poke08 img503"><div></div></div>
+    <div class="image poke08 img504"><div></div></div>
+    <div class="image poke08 img505"><div></div></div>
+    <div class="image poke08 img506"><div></div></div>
+  </div>
+  <div class="textDiv">
+    <p>공유 URL</p>
+    <input type="text" id="shareLink" style="width:40%;" readonly />
+    <p>클릭하면 클립보드에 복사됩니다.</p>
+  </div>
+</body>
+<th:block th:replace="layout/footer :: footerFragment"/>
+</html>
