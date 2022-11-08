@@ -44,6 +44,6 @@ public class IndexController {
 
     model.addAttribute("code", code);
 
-    return "/pokedoc/halloween";
+    return "pokedoc/halloween";
   }
 }
