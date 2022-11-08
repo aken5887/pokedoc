@@ -1,5 +1,6 @@
 package com.minu.pokedoc.domain.category;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,7 @@ public class Category {
 
   private String name;
 
+  @Column(name="category_desc")
   private String desc;
 
   @Builder
