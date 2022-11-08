@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.minu.pokedoc.domain.category.Category;
 import com.minu.pokedoc.domain.category.CategoryRepository;
+import com.minu.pokedoc.domain.user.Role;
 import com.minu.pokedoc.domain.user.User;
 import com.minu.pokedoc.domain.user.UserRepository;
 import java.time.LocalDateTime;
@@ -37,7 +38,7 @@ class StickerRepositoryTest {
 
   @BeforeEach
   void setUp(){
-    User user = User.builder().name("test").build();
+    User user = User.builder().name("test").email("test.com").role(Role.GENERAL).build();
     this.userId = userRepository.save(user).getId();
     Category category = Category.builder().name("halloween").build();
     this.cateogryId = categoryRepository.save(category).getId();

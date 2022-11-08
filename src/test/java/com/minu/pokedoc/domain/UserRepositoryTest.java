@@ -2,6 +2,7 @@ package com.minu.pokedoc.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.minu.pokedoc.domain.user.Role;
 import com.minu.pokedoc.domain.user.User;
 import com.minu.pokedoc.domain.user.UserRepository;
 import java.util.List;
@@ -32,6 +33,7 @@ class UserRepositoryTest {
     User user = User.builder()
                 .name(name)
                 .email(email)
+                .role(Role.GENERAL)
                 .build();
 
     userRepository.save(user);

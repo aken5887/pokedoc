@@ -1,21 +1,85 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <th:block th:fragment="headerFragment">
+  <th:block th:fragment="headerFragment(category)">
     <head>
       <meta charset="UTF-8">
+      <meta name="keywords" content="포켓몬,포켓몬빵,띠부씰,도감">
+      <meta name="description" content="포켓몬빵 띠부띠부씰 도감">
       <title>포켓몬스터 2022 띠부띠부씰 도감</title>
+      <link rel="icon" href="/image/pokemon-1635904_960_720.png">
       <link rel="stylesheet" href="/css/common.css"/>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css"/>
+      <style>
+        .btn-google {
+          background:#fff url('/image/icon/ico_google.png') no-repeat;
+          font-size: 13px;
+          color: black;
+          background-size: auto 100%;
+          text-align: center;
+        }
+        .btn-kakao {
+          background:#f9dd00 url('/image/icon/ico_kakao.png') no-repeat;
+          font-size: 13px;
+          color: black;
+          background-size: auto 100%;
+          text-align: center;
+        }
+        .btn span{
+          margin-left:20px;
+        }
+        .btn-logout {
+          background:#fff;
+          font-size: 13px;
+          color: black;
+          background-size: auto 100%;
+          text-align: center;
+        }
+      </style>
     </head>
     <body>
-      <div class="col-md-12">
-        <div class="row">
-          <div class="col-md-6"></div>
-          <div class="col-md-6">
-            <img src="/image/kakao_login_small.png" class="btn btn-primary"/>
+      <header class="p-3 bg-dark text-white">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+              <img src="/image/025Pikachu_OS_anime_11.png" width="30" height="40"/>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><a th:href="@{/halloween}" id="halloween" class="nav-link px-2 text-secondary">Halloween</a></li>
+              <li><a href="#" id="1th" class="nav-link px-2 text-white">1세대</a></li>
+              <li><a href="#" id="2nd" class="nav-link px-2 text-white">2세대</a></li>
+            </ul>
+
+            <div class="text-end">
+              <a th:if="${user} == null" href="/oauth2/authorization/google" class="btn btn-google me-2">
+                <span>구글로그인</span>
+              </a>
+              <a th:if="${user} == null" href="/oauth2/authorization/kakao" class="btn btn-kakao me-2">
+                <span>카카오로그인</span>
+              </a>
+              <a href="javascript:void(0);"
+                 th:if="${user} != null"
+                 class="link-dark text-decoration-none dropdown-toggle"
+                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img th:src="${user.picture}" alt="mdo" width="32" height="32" class="rounded-circle">
+              </a>
+              <a th:if="${user} != null" href="/logout" role="button" class="btn btn-logout">로그아웃</a>
+            </div>
           </div>
         </div>
-      </div>
+      </header>
+      <script type="text/javascript">
+        const param = "[[${category}]]";
+        const navs =  document.getElementsByClassName('nav-link');
+        const selected =  document.getElementById(param);
+        Array.prototype.forEach.call(navs, function(nav){
+          nav.classList.replace('text-secondary', 'text-white');
+          console.log(nav);
+        });
+        if(selected){
+          selected.classList.replace('text-white', 'text-secondary');
+        }
+      </script>
     </body>
   </th:block>
 </html>

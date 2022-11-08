@@ -88,7 +88,7 @@ function createLink() {
   }
   const resultCode = encode(codeStr + '00000');
   console.log(resultCode + "/ " + cnt);
-  document.getElementById('cnt').innerHTML = cnt;
+  document.getElementById('cnt').innerHTML = cnt + '/' + image.length;
   document.getElementById("code").value =  resultCode;
   document.getElementById("shareLink").value = url+"?code="+resultCode;
 }
@@ -103,7 +103,6 @@ const common = {
             if(callbackFunc != undefined && callbackFunc != null){
               callbackFunc(result);
             }
-            alert('성공 = '+result);
           }else{
             alert('실패');
           }

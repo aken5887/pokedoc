@@ -1,9 +1,12 @@
 package com.minu.pokedoc.web;
 
+import com.minu.pokedoc.config.auth.annotation.LoginUser;
+import com.minu.pokedoc.config.auth.dto.SessionUser;
 import com.minu.pokedoc.service.StickerService;
 import com.minu.pokedoc.web.dto.sticker.StickerRequestDto;
 import com.minu.pokedoc.web.dto.sticker.StickerResponseDto;
 import com.minu.pokedoc.web.dto.sticker.StickerUpdateRequestDto;
+import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,10 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StickerApiController {
   private final StickerService stickerService;
+  private final HttpSession httpSession;
 
   @PostMapping("/api/stickers")
-  public Long save(@RequestBody StickerRequestDto requestDto) {
-    return stickerService.save(requestDto);
+  public Long save(@RequestBody StickerRequestDto requestDto, @LoginUser SessionUser user) {
+    return stickerService.save(user, requestDto);
   }
 
   @PutMapping("/api/stickers/{id}")

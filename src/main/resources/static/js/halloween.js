@@ -1,7 +1,6 @@
 function saveSticker(){
   const requestDto = {
     'code' : document.getElementById("code").value,
-    'userId' : 1,
     'categoryId' : 1
   };
   common.sendAjax(requestDto, 'POST', '/api/stickers', afterSaveSticker)

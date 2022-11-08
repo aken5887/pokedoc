@@ -1,5 +1,7 @@
 package com.minu.pokedoc.web;
 
+import com.minu.pokedoc.config.auth.annotation.LoginUser;
+import com.minu.pokedoc.config.auth.dto.SessionUser;
 import com.minu.pokedoc.domain.sticker.Sticker;
 import com.minu.pokedoc.domain.user.User;
 import com.minu.pokedoc.service.CategoryService;
@@ -22,16 +24,15 @@ public class IndexController {
   private final StickerService stickerService;
 
   @GetMapping("/")
-  public String index(Model model){
+  public String index(Model model, HttpSession httpSession, @LoginUser SessionUser user){
     model.addAttribute("categories", categoryService.findAddDesc());
     return "index";
   }
 
   @GetMapping("/halloween")
   public String halloween(Model model, HttpSession httpSession,
-      @RequestParam(value = "code", required = false) String requestCode) {
-
-    User user = (User) httpSession.getAttribute("user");
+      @RequestParam(value = "code", required = false) String requestCode,
+      @LoginUser SessionUser user) {
     String code = "";
 
     if(user != null){

@@ -1,5 +1,6 @@
 package com.minu.pokedoc.service;
 
+import com.minu.pokedoc.config.auth.dto.SessionUser;
 import com.minu.pokedoc.domain.category.Category;
 import com.minu.pokedoc.domain.category.CategoryRepository;
 import com.minu.pokedoc.domain.sticker.Sticker;
@@ -25,12 +26,12 @@ public class StickerService {
   private static final String DEFAULT_CODE = "00000000000000000";
 
   @Transactional
-  public Long save(StickerRequestDto requestDto){
+  public Long save(SessionUser sessionUser, StickerRequestDto requestDto){
     Category category
         = categoryRepository.findById(requestDto.getCategoryId()).orElseThrow(() ->
         new IllegalArgumentException("there is no category"));
     User user
-        = userRepository.findById(requestDto.getUserId()).orElseThrow(() ->
+        = userRepository.findById(sessionUser.getId()).orElseThrow(() ->
         new IllegalArgumentException("there is no user")
     );
 

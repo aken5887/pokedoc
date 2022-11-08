@@ -3,6 +3,8 @@ package com.minu.pokedoc.web;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.minu.pokedoc.service.CategoryService;
+import com.minu.pokedoc.service.StickerService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class IndexControllerTest {
 
+  @Autowired CategoryService categoryService;
+  @Autowired StickerService stickerService;
+
   @Autowired
   TestRestTemplate restTemplate;
 
@@ -23,6 +28,6 @@ class IndexControllerTest {
     // when
     String body = this.restTemplate.getForObject("/", String.class);
     // then
-    assertThat(body).contains("pokedoc");
+    assertThat(body).contains("띠부띠부씰");
   }
 }

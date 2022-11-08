@@ -19,13 +19,11 @@ public class StickerRequestDto {
 
   private String code;
   private Long categoryId;
-  private Long userId;
 
   @Builder
   public StickerRequestDto(String code, Long categoryId, Long userId) {
     this.code = code;
     this.categoryId = categoryId;
-    this.userId = userId;
   }
 
   public Sticker toEntity(User user, Category category){
