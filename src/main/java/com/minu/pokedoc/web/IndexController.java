@@ -46,4 +46,9 @@ public class IndexController {
 
     return "pokedoc/halloween";
   }
+
+  @GetMapping("/error")
+  public void error(){
+    throw new IllegalArgumentException("error page");
+  }
 }
