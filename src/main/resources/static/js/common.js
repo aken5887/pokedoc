@@ -34,12 +34,24 @@ function addShareLinkEvent(){
   }
 }
 
+function changeByCode(){
+  const inputCode = document.getElementById("inputCode")
+  if(inputCode.value != null && inputCode.value != ''){
+    document.getElementById("code").value = inputCode.value;
+    toggleImage();
+  }else{
+    alert("코드를 입력하세요;");
+    inputCode.focus();
+  }
+}
+
 function toggleImage(){
-  const code = document .getElementById("code").value;
+  const code = document.getElementById("code").value;
   const image = document.querySelectorAll('.image > div');
   const decoded = decode(code);
 
   for(let i=0; i < image.length; i++){
+    image[i].classList.remove('selected'); // 추가됨
     if(decoded && decoded[i] == '1'){
       image[i].classList.toggle('selected');
     }
@@ -79,12 +91,12 @@ function createLink() {
 
   for (var i = 0 ; i < image.length; i++) {
     codeStr += (image[i].classList.contains('selected')?'1':'0');
+
     if(image[i].classList.contains('selected')) {
       cnt++;
     }
   }
   const resultCode = encode(codeStr + '00000');
-  console.log(resultCode + "/ " + cnt);
   document.getElementById('cnt').innerHTML = cnt + '/' + image.length;
   document.getElementById("code").value =  resultCode;
   document.getElementById("shareUrl").innerText = url+"?code="+resultCode;

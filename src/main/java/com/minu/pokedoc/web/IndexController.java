@@ -35,20 +35,15 @@ public class IndexController {
       @LoginUser SessionUser user) {
     String code = "";
 
-    if(user != null){
+    if(!StringUtils.isNullOrEmpty(requestCode)){
+      code = requestCode;
+    } else if(user != null) {
       StickerResponseDto sticker = stickerService.findByUserId(1L, user.getId());
       code = sticker.getCode();
-    }else if(!StringUtils.isNullOrEmpty(requestCode)){
-      code = requestCode;
     }
 
     model.addAttribute("code", code);
 
     return "pokedoc/halloween";
-  }
-
-  @GetMapping("/error")
-  public void error(){
-    throw new IllegalArgumentException("error page");
   }
 }
