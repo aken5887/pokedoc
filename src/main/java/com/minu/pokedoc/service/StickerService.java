@@ -22,9 +22,7 @@ public class StickerService {
   private final StickerRepository stickerRepository;
   private final CategoryRepository categoryRepository;
   private final UserRepository userRepository;
-
   private static final String DEFAULT_CODE = "00000000000000000";
-  
 
   @Transactional
   public Long save(SessionUser sessionUser, StickerRequestDto requestDto){
