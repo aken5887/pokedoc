@@ -32,6 +32,7 @@ chmod +x $JAR_NAME
 
 echo ">>>>>>> $JAR_NAME 실행"
 
-nohup java -jar $JAR_NAME > $REPOSITORY/nohup.out
---spring.config.location=classpath:/application-real.properties,/home/ec2-user/pokedoc/application-real-db.properties,/home/ec2-user/pokedoc/application-oauth.properties
---spring.profiles.active=real
+nohup java -jar \
+  --spring.config.location=classpath:/application-real.properties,/home/ec2-user/pokedoc/application-real-db.properties,/home/ec2-user/pokedoc/application-oauth.properties \
+  --spring.profiles.active=real \
+  $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
