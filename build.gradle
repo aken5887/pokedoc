@@ -7,7 +7,6 @@ plugins {
 
 version = '1.0.1-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
 group = 'com.minu'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 jar {
