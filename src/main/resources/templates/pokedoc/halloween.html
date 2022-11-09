@@ -16,6 +16,8 @@
       </p>
       <small class="text-muted">🔗 버튼을 클릭하면 클립보드에 복사됩니다.</small>
       <p class="text-end">
+        <a href="javascript:inputCode();"
+           onclick="return false;" id="codeBtn" class="btn btn-primary my-2" role="button">반영하기</a>
         <a href="#" onclick="return false;" id="shareBtn" class="btn btn-primary my-2" role="button">공유하기</a>
         <a href="#" onclick="return false;" id="reverseBtn" class="btn btn-primary my-2" role="button">선택반전</a>
         <a th:if="${user} != null"
