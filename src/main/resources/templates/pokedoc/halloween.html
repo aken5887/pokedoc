@@ -4,7 +4,7 @@
 <th:block th:replace="layout/header :: headerFragment('halloween')"/>
 <body onload="javascript:toggleImage();">
 <main>
-  <div class="px-4 py-5 my-5 text-white">
+  <div class="px-3 py-5 my-5 text-white">
     <input type="hidden" id="code" name="code" th:value="${code}"/>
     <div class="col-lg-10 col-md-8 mx-auto">
       <h1 class="fw-light text-center mb-4">포켓몬스터 2022 띠부띠부씰 도감 - 할로윈</h1>
@@ -12,11 +12,12 @@
         도감 완성도 : 💡 / 전체 (<b id="cnt">0/0</b>)
       </p>
       <p class="card-text">
-        공유 URL : <input type="text" id="shareLink" style="width:80%;" readonly/>
+        공유 URL : <b id="shareUrl"></b>
       </p>
-      <small class="text-muted">🔗 URL을 클릭하면 클립보드에 복사됩니다.</small>
+      <small class="text-muted">🔗 버튼을 클릭하면 클립보드에 복사됩니다.</small>
       <p class="text-end">
-        <a href="javscript:void(0)" id="reverseBtn" class="btn btn-primary my-2" role="button">선택반전</a>
+        <a href="#" onclick="return false;" id="shareBtn" class="btn btn-primary my-2" role="button">공유하기</a>
+        <a href="#" onclick="return false;" id="reverseBtn" class="btn btn-primary my-2" role="button">선택반전</a>
         <a th:if="${user} != null"
            href="javascript:saveSticker();" id="saveBtn" class="btn btn-secondary my-2" role="button">저장하기</a>
       </p>

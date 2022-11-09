@@ -25,13 +25,10 @@ function addReverseBtnEvent(){
 }
 
 function addShareLinkEvent(){
-  const shareLink = document.getElementById("shareLink");
-  if(shareLink){
-    shareLink.style.cursor = 'pointer';
-    shareLink.addEventListener('click', function(event){
-      this.select();
-      document.execCommand('copy');
-      this.setSelectionRange(0, this.value.length);
+  const shareBtn = document.getElementById("shareBtn");
+  if(shareBtn){
+    shareBtn.addEventListener('click', function(event){
+      window.navigator.clipboard.writeText(document.getElementById("shareUrl").innerText);
       alert("링크가 복사되었습니다.");
     });
   }
@@ -90,7 +87,7 @@ function createLink() {
   console.log(resultCode + "/ " + cnt);
   document.getElementById('cnt').innerHTML = cnt + '/' + image.length;
   document.getElementById("code").value =  resultCode;
-  document.getElementById("shareLink").value = url+"?code="+resultCode;
+  document.getElementById("shareUrl").innerText = url+"?code="+resultCode;
 }
 
 const common = {
