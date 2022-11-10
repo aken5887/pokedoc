@@ -73,7 +73,7 @@ class StickerApiControllerTest {
   void setUp(){
     User user = User.builder().name("test").email("test.com").role(Role.GENERAL).build();
     this.userId = userRepository.save(user).getId();
-    Category category = Category.builder().name("halloween").build();
+    Category category = Category.builder().name("test").build();
     this.cateogryId = categoryRepository.save(category).getId();
 
     mockMvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();

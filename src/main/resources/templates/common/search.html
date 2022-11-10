@@ -4,6 +4,7 @@
 <th:block th:fragment="searchFragment(title)">
   <input type="hidden" id="shareUrl" name="shareUrl"/>
   <input th:if="${user} != null" type="hidden" id="loginUserId" name="loginUserId" th:value="${user.id}"/>
+  <input type="hidden" id="categoryId" name="categoryId" th:value="${categoryId}"/>
   <div class="col-lg-10 col-md-8 mx-auto">
     <h1 class="fw-light text-center mb-4" th:text="${title}">띠부띠부씰 도감</h1>
     <div class="container d-flex flex-wrap justify-content-center mb-3">

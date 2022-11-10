@@ -141,7 +141,7 @@ function saveSticker(){
   const loginUser = document.getElementById("loginUserId");
   const requestDto = {
     'code' : document.getElementById("code").value,
-    'categoryId' : 1
+    'categoryId' : document.getElementById("categoryId").value
   };
   if(loginUser != null && loginUser.value != ''){
     common.sendAjax(requestDto, 'POST', '/api/stickers', afterSaveSticker);

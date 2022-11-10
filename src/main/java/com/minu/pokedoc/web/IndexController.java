@@ -16,6 +16,7 @@ import org.h2.util.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RequiredArgsConstructor
@@ -32,28 +33,23 @@ public class IndexController {
     return "index";
   }
 
-  @GetMapping("/halloween")
+  @GetMapping("/pokedex/{path}")
   public String halloween(Model model, HttpSession httpSession,
+      @PathVariable String path,
       @RequestParam(value = "code", required = false) String requestCode,
       @LoginUser SessionUser user, @LoadCategories ArrayList<CategoryResponseDto> category) {
-    model.addAttribute("code", findCode(requestCode, user));
-    return "pokedoc/halloween";
+      Long categoryId = categoryService.findCategoryIdByName(path);
+      model.addAttribute("categoryId", categoryId);
+      model.addAttribute("code", findCode(requestCode, categoryId, user));
+      return "pokedoc/"+path;
   }
 
-  @GetMapping("/general")
-  public String general(Model model, HttpSession httpSession,
-      @RequestParam(value="code", required = false) String requestCode,
-      @LoginUser SessionUser user, @LoadCategories ArrayList<CategoryResponseDto> category){
-    model.addAttribute("code", findCode(requestCode, user));
-    return "pokedoc/general";
-  }
-
-  private String findCode(String requestCode, SessionUser user){
+  private String findCode(String requestCode, Long categoryId, SessionUser user){
     String code = "";
     if(!StringUtils.isNullOrEmpty(requestCode)){
       code = requestCode;
     } else if(user != null) {
-      StickerResponseDto sticker = stickerService.findByUserId(1L, user.getId());
+      StickerResponseDto sticker = stickerService.findByUserId(categoryId, user.getId());
       code = sticker.getCode();
     }
     return code;

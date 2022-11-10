@@ -6,6 +6,7 @@ import com.minu.pokedoc.domain.user.Role;
 import com.minu.pokedoc.domain.user.User;
 import com.minu.pokedoc.domain.user.UserRepository;
 import java.util.List;
+import java.util.Optional;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -39,10 +40,10 @@ class UserRepositoryTest {
     userRepository.save(user);
 
     // when
-    List<User> users = userRepository.findAll();
+    Optional<User> findUser = userRepository.findByEmail(email);
 
     // then
-    assertEquals(users.get(0).getName(), name);
-    assertEquals(users.get(0).getEmail(), email);
+    assertEquals(findUser.get().getName(), name);
+    assertEquals(findUser.get().getEmail(), email);
   }
 }

@@ -1,5 +1,6 @@
 package com.minu.pokedoc.service;
 
+import com.minu.pokedoc.domain.category.Category;
 import com.minu.pokedoc.domain.category.CategoryRepository;
 import com.minu.pokedoc.web.dto.category.CategoryResponseDto;
 import java.util.List;
@@ -21,5 +22,12 @@ public class CategoryService {
     return categoryRepository.findAll().stream()
         .map(CategoryResponseDto::new)
         .collect(Collectors.toList());
+  }
+
+  @Transactional(readOnly = true)
+  public Long findCategoryIdByName(String name){
+    return categoryRepository.findByName(name).orElseThrow(() -> {
+      throw new IllegalArgumentException("there is no category by name = "+name);
+    }).getId();
   }
 }
