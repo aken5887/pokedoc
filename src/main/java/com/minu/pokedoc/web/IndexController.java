@@ -1,13 +1,15 @@
 package com.minu.pokedoc.web;
 
+import com.minu.pokedoc.config.auth.annotation.LoadCategories;
 import com.minu.pokedoc.config.auth.annotation.LoginUser;
 import com.minu.pokedoc.config.auth.dto.SessionUser;
-import com.minu.pokedoc.domain.sticker.Sticker;
-import com.minu.pokedoc.domain.user.User;
+import com.minu.pokedoc.domain.category.Category;
 import com.minu.pokedoc.service.CategoryService;
 import com.minu.pokedoc.service.StickerService;
+import com.minu.pokedoc.web.dto.category.CategoryResponseDto;
 import com.minu.pokedoc.web.dto.sticker.StickerResponseDto;
-import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.h2.util.StringUtils;
@@ -24,26 +26,36 @@ public class IndexController {
   private final StickerService stickerService;
 
   @GetMapping("/")
-  public String index(Model model, HttpSession httpSession, @LoginUser SessionUser user){
-    model.addAttribute("categories", categoryService.findAddDesc());
+  public String index(Model model, HttpSession httpSession,
+      @LoginUser SessionUser user, @LoadCategories ArrayList<CategoryResponseDto> category){
+//    model.addAttribute("categories", categoryService.findAddDesc());
     return "index";
   }
 
   @GetMapping("/halloween")
   public String halloween(Model model, HttpSession httpSession,
       @RequestParam(value = "code", required = false) String requestCode,
-      @LoginUser SessionUser user) {
-    String code = "";
+      @LoginUser SessionUser user, @LoadCategories ArrayList<CategoryResponseDto> category) {
+    model.addAttribute("code", findCode(requestCode, user));
+    return "pokedoc/halloween";
+  }
 
+  @GetMapping("/general")
+  public String general(Model model, HttpSession httpSession,
+      @RequestParam(value="code", required = false) String requestCode,
+      @LoginUser SessionUser user, @LoadCategories ArrayList<CategoryResponseDto> category){
+    model.addAttribute("code", findCode(requestCode, user));
+    return "pokedoc/general";
+  }
+
+  private String findCode(String requestCode, SessionUser user){
+    String code = "";
     if(!StringUtils.isNullOrEmpty(requestCode)){
       code = requestCode;
     } else if(user != null) {
       StickerResponseDto sticker = stickerService.findByUserId(1L, user.getId());
       code = sticker.getCode();
     }
-
-    model.addAttribute("code", code);
-
-    return "pokedoc/halloween";
+    return code;
   }
 }

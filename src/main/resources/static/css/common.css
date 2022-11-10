@@ -1,43 +1,16 @@
 .flex {display: flex;}
 #downloadBtn { margin: 0 10px; }
 .selected {background-color: rgba(0,0,0,0.7);}
-/*.poke01 {background:url("../image/re_pokemon1.png") no-repeat; background-size: 619px 619px;}*/
-/*.poke02 {background:url("../image/re_pokemon2.png") no-repeat; background-size: 619px 619px;}*/
-/*.poke03 {background:url("../image/re_pokemon3.png") no-repeat; background-size: 619px 619px;}*/
-/*.poke04 {background:url("../image/re_pokemon4.png") no-repeat; background-size: 619px 619px;}*/
-/*.poke05 {background:url("../image/re_pokemon5.png") no-repeat; background-size: 619px 619px;}*/
-/*.poke06 {background:url("../image/re_pokemon6.png") no-repeat; background-size: 619px 619px;}*/
-/*.poke07 {background:url("../image/re_pokemon7.png") no-repeat; background-size: 619px 619px;}*/
-.poke08 {background:url("../image/halloween.jpg") no-repeat; background-size: 840px 630px;}
-.image {position:relative; display:inline-block; width:112px; height:145px; margin: 1px; cursor:pointer;}
+.poke01 {background:url("../image/general/1st_1.png") no-repeat; background-size: 619px 619px;}
+.poke02 {background:url("../image/general/1st_2.png") no-repeat; background-size: 619px 619px;}
+.poke03 {background:url("../image/general/1st_3.png") no-repeat; background-size: 619px 619px;}
+.poke04 {background:url("../image/general/1st_4.png") no-repeat; background-size: 619px 619px;}
+.poke05 {background:url("../image/general/1st_5.png") no-repeat; background-size: 619px 619px;}
+.poke06 {background:url("../image/general/1st_6.png") no-repeat; background-size: 619px 619px;}
+.poke07 {background:url("../image/general/1st_7.png") no-repeat; background-size: 619px 619px;}
+.poke08 {background:url("../image/general/2nd_1.jpeg") no-repeat; background-size: 674px 2056px;}
+.poke09 {background:url("../image/halloween.jpg") no-repeat; background-size: 840px 630px;}
 .image > div {width:100%; height:100%; position:absolute; border: 1px solid black;}
-.img201 {background-position: -10px -10px}
-.img202 {background-position: -129px -10px;}
-.img203 {background-position: -248px -10px;}
-.img204 {background-position: -366px -10px;}
-.img205 {background-position: -482px -9.5px;}
-.img206 {background-position: -598px -11px;}
-.img207 {background-position: -717px -11px;}
-.img301 {background-position: -9.5px -164px;}
-.img302 {background-position: -128px -164px;}
-.img303 {background-position: -246px -164px;}
-.img304 {background-position: -365px -164px;}
-.img305 {background-position: -482px -164px;}
-.img306 {background-position: -597.5px -165px;}
-.img307 {background-position: -717px -165px;}
-.img401 {background-position: -8.5px -319px}
-.img402 {background-position: -127px -319px;}
-.img403 {background-position: -246px -319px;}
-.img404 {background-position: -364.5px -319px;}
-.img405 {background-position: -481px -318px;}
-.img406 {background-position: -597px -319.2px;}
-.img407 {background-position: -716px -319.5px;}
-.img501 {background-position: -8.5px -472px}
-.img502 {background-position: -127px -472px;}
-.img503 {background-position: -246px -472px;}
-.img504 {background-position: -364.5px -472px;}
-.img505 {background-position: -481px -471px;}
-.img506 {background-position: -597.5px -472px;}
 body {
   background-color: #1b1b1b !important;
   font-family:NotoSans,sans-serif;

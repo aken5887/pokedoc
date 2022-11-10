@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<th:block th:fragment="searchFragment(title)">
+  <input type="hidden" id="shareUrl" name="shareUrl"/>
+  <input th:if="${user} != null" type="hidden" id="loginUserId" name="loginUserId" th:value="${user.id}"/>
+  <div class="col-lg-10 col-md-8 mx-auto">
+    <h1 class="fw-light text-center mb-4" th:text="${title}">띠부띠부씰 도감</h1>
+    <div class="container d-flex flex-wrap justify-content-center mb-3">
+      <p class="lead">
+        도감 완성도 : 💡 / 전체 (<b id="cnt">0/0</b>)
+      </p>
+    </div>
+    <div class="container d-flex flex-wrap justify-content-center">
+      <p class="mx-2"><input class="form-control" type="search" placeholder="코드를 입력하세요.." id="code" th:value="${code}"/></p>
+      <p class="text-end">
+        <a href="javascript:changeByCode();"id="codeBtn" class="btn btn-outline-light me-2" role="button">✅적용</a><br/>
+      </p>
+    </div>
+    <div class="container d-flex flex-wrap justify-content-center">
+      <p class="text-center">
+        <a href="#" onclick="return false;" id="shareBtn" class="btn btn-outline-light me-2" role="button">🔗공유</a>
+        <a href="#" onclick="return false;" id="reverseBtn" class="btn btn-outline-light me-2" role="button">🔄반전</a>
+        <a href="javascript:saveSticker();" id="saveBtn" class="btn btn-warning" role="button">💾저장</a>
+      </p>
+    </div>
+    <div class="container d-flex flex-wrap justify-content-center">
+      <p class="text-left">
+        <small class="text-muted">🔗버튼을 클릭하면 클립보드에 URL이 복사됩니다.</small><br/>
+        <small class="text-muted">✅적용을 클릭하면 입력된 코드에 따라 도감이 변경됩니다</small>
+      </p>
+    </div>
+  </div>
+</th:block>
+</html>

@@ -28,16 +28,15 @@ function addShareLinkEvent(){
   const shareBtn = document.getElementById("shareBtn");
   if(shareBtn){
     shareBtn.addEventListener('click', function(event){
-      window.navigator.clipboard.writeText(document.getElementById("shareUrl").innerText);
+      window.navigator.clipboard.writeText(document.getElementById("shareUrl").value);
       alert("링크가 복사되었습니다.");
     });
   }
 }
 
 function changeByCode(){
-  const inputCode = document.getElementById("inputCode")
+  const inputCode = document.getElementById("code")
   if(inputCode.value != null && inputCode.value != ''){
-    document.getElementById("code").value = inputCode.value;
     toggleImage();
   }else{
     alert("코드를 입력하세요;");
@@ -99,7 +98,7 @@ function createLink() {
   const resultCode = encode(codeStr + '00000');
   document.getElementById('cnt').innerHTML = cnt + '/' + image.length;
   document.getElementById("code").value =  resultCode;
-  document.getElementById("shareUrl").innerText = url+"?code="+resultCode;
+  document.getElementById("shareUrl").value = url+"?code="+resultCode;
 }
 
 const common = {
@@ -122,4 +121,21 @@ const common = {
       httpRequest.setRequestHeader('Content-Type','application/json');
       httpRequest.send(data);
     }
+}
+
+function saveSticker(){
+  const loginUser = document.getElementById("loginUserId");
+  const requestDto = {
+    'code' : document.getElementById("code").value,
+    'categoryId' : 1
+  };
+  if(loginUser != null && loginUser.value != ''){
+    common.sendAjax(requestDto, 'POST', '/api/stickers', afterSaveSticker);
+  }else{
+    alert("로그인 이후에 사용할 수 있습니다.")
+  }
+}
+
+function afterSaveSticker(response){
+  alert('저장에 성공하였습니다');
 }

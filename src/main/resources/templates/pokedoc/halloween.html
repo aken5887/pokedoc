@@ -1,67 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
                 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<th:block th:replace="layout/header :: headerFragment('halloween')"/>
+<th:block th:replace="common/header :: headerFragment('halloween')"/>
+<link rel="stylesheet" href="/css/halloween.css"/>
 <body onload="javascript:toggleImage();">
 <main>
   <div class="px-3 my-5 text-white">
-    <input type="hidden" id="code" name="code" th:value="${code}"/>
-    <div class="col-lg-10 col-md-8 mx-auto">
-      <h1 class="fw-light text-center mb-4">띠부띠부씰 도감 - 할로윈</h1>
-      <div class="container d-flex flex-wrap justify-content-center">
-        <p class="lead">
-          도감 완성도 : 💡 / 전체 (<b id="cnt">0/0</b>)
-        </p>
-      </div>
-      <div class="container d-flex flex-wrap justify-content-center mb-3">
-        <p class="card-text">
-          공유 URL : <b id="shareUrl"></b>
-        </p>
-      </div>
-      <div class="container d-flex flex-wrap justify-content-center">
-        <p class="mx-2"><input class="form-control" type="search" placeholder="코드를 입력하세요.." id="inputCode" th:value="${code}"/></p>
-        <p class="text-end"><a href="javascript:changeByCode();"id="codeBtn" class="btn btn-outline-light me-2" role="button">코드입력</a></p>
-      </div>
-      <div class="container d-flex flex-wrap justify-content-center">
-        <p class="text-end">
-          <a href="#" onclick="return false;" id="shareBtn" class="btn btn-outline-light me-2" role="button">🔗공유</a>
-          <a href="#" onclick="return false;" id="reverseBtn" class="btn btn-outline-light me-2" role="button">🔄반전</a>
-          <a th:if="${user} != null" href="javascript:saveSticker();" id="saveBtn" class="btn btn-warning" role="button">💾저장</a><br/>
-          <small class="text-muted">🔗공유 버튼을 클릭하면 클립보드에 복사됩니다.</small>
-        </p>
-      </div>
-    </div>
+    <th:block th:replace="common/search :: searchFragment('띠부실도감 - 할로윈')"/>
     <div id="imageDiv">
-      <div class="image poke08 img201"><div></div></div>
-      <div class="image poke08 img202"><div></div></div>
-      <div class="image poke08 img203"><div></div></div>
-      <div class="image poke08 img204"><div></div></div>
-      <div class="image poke08 img205"><div></div></div>
-      <div class="image poke08 img206"><div></div></div>
-      <div class="image poke08 img207"><div></div></div>
-      <div class="image poke08 img301"><div></div></div>
-      <div class="image poke08 img302"><div></div></div>
-      <div class="image poke08 img303"><div></div></div>
-      <div class="image poke08 img304"><div></div></div>
-      <div class="image poke08 img305"><div></div></div>
-      <div class="image poke08 img306"><div></div></div>
-      <div class="image poke08 img307"><div></div></div>
-      <div class="image poke08 img401"><div></div></div>
-      <div class="image poke08 img402"><div></div></div>
-      <div class="image poke08 img403"><div></div></div>
-      <div class="image poke08 img404"><div></div></div>
-      <div class="image poke08 img405"><div></div></div>
-      <div class="image poke08 img406"><div></div></div>
-      <div class="image poke08 img407"><div></div></div>
-      <div class="image poke08 img501"><div></div></div>
-      <div class="image poke08 img502"><div></div></div>
-      <div class="image poke08 img503"><div></div></div>
-      <div class="image poke08 img504"><div></div></div>
-      <div class="image poke08 img505"><div></div></div>
-      <div class="image poke08 img506"><div></div></div>
+      <div class="image poke09 img201"><div></div></div>
+      <div class="image poke09 img202"><div></div></div>
+      <div class="image poke09 img203"><div></div></div>
+      <div class="image poke09 img204"><div></div></div>
+      <div class="image poke09 img205"><div></div></div>
+      <div class="image poke09 img206"><div></div></div>
+      <div class="image poke09 img207"><div></div></div>
+      <div class="image poke09 img301"><div></div></div>
+      <div class="image poke09 img302"><div></div></div>
+      <div class="image poke09 img303"><div></div></div>
+      <div class="image poke09 img304"><div></div></div>
+      <div class="image poke09 img305"><div></div></div>
+      <div class="image poke09 img306"><div></div></div>
+      <div class="image poke09 img307"><div></div></div>
+      <div class="image poke09 img401"><div></div></div>
+      <div class="image poke09 img402"><div></div></div>
+      <div class="image poke09 img403"><div></div></div>
+      <div class="image poke09 img404"><div></div></div>
+      <div class="image poke09 img405"><div></div></div>
+      <div class="image poke09 img406"><div></div></div>
+      <div class="image poke09 img407"><div></div></div>
+      <div class="image poke09 img501"><div></div></div>
+      <div class="image poke09 img502"><div></div></div>
+      <div class="image poke09 img503"><div></div></div>
+      <div class="image poke09 img504"><div></div></div>
+      <div class="image poke09 img505"><div></div></div>
+      <div class="image poke09 img506"><div></div></div>
     </div>
   </div>
 </main>
 </body>
-<th:block th:replace="layout/footer :: footerFragment"/>
+<th:block th:replace="common/footer :: footerFragment"/>
 </html>

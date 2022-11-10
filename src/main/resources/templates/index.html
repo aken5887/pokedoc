@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<th:block th:replace="layout/header :: headerFragment('index')"/>
+<th:block th:replace="common/header :: headerFragment('index')"/>
+<style>
+  h1.card-title {
+    overflow: hidden;
+    max-height: 315px;
+  }
+</style>
 <body>
 <main>
   <div class="px-3 py-5 my-5 text-center text-white">
@@ -10,12 +16,8 @@
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4 mt-5">
         이 나이에 어쩌구 저쩌구 한숨나오는 취미생활 <br/>
-        Personal 띠뿌실 온라인 도감
+        전용 띠뿌실 온라인 도감
       </p>
-<!--      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">-->
-<!--        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>-->
-<!--        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>-->
-<!--      </div>-->
     </div>
   </div>
   <div class="row row-cols-1 row-cols-md-2 mb-3 text-center">
@@ -39,5 +41,5 @@
   </div>
 </main>
 </body>
-<th:block th:replace="layout/footer :: footerFragment"/>
+<th:block th:replace="common/footer :: footerFragment"/>
 </html>
