@@ -7,6 +7,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.minu.pokedoc.config.auth.SecurityConfig;
+import com.minu.pokedoc.config.auth.WebConfig;
+import com.minu.pokedoc.config.auth.annotation.LoadCategoriesArgumentResolver;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(controllers= HelloController.class
 , excludeFilters = {
-    @ComponentScan.Filter(type= FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)
-}
+    @ComponentScan.Filter(type= FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class),
+    @ComponentScan.Filter(type= FilterType.ASSIGNABLE_TYPE, classes = WebConfig.class),
+    @ComponentScan.Filter(type=FilterType.ASSIGNABLE_TYPE, classes = LoadCategoriesArgumentResolver.class)
+  }
 )
 class HelloControllerTest {
 
