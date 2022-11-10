@@ -28,7 +28,7 @@
         </div>
         <div class="card-body">
           <h1 class="card-title pricing-card-title">
-           <img th:src="@{/image/{name}.jpg(name=${category.name})}" width="100%"/>
+           <img th:src="@{/image/main/{name}.jpg(name=${category.name})}" width="100%"/>
           </h1>
           <ul class="list-unstyled mt-3 mb-4">
             <p th:text="${category.desc}"></p>

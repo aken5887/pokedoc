@@ -77,10 +77,10 @@
         const navs =  document.getElementsByClassName('nav-link');
         const selected =  document.getElementById(param);
         Array.prototype.forEach.call(navs, function(nav){
-          nav.classList.replace('text-secondary', 'text-white');
+          nav.classList.replace('text-white', 'text-secondary');
         });
         if(selected){
-          selected.classList.replace('text-white', 'text-secondary');
+          selected.classList.replace('text-secondary', 'text-white');
         }
       </script>
     </body>
