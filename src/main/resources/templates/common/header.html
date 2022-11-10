@@ -50,7 +50,7 @@
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               <li th:each="category:${categories}">
-                <a th:href="@{/{name}(name=${category.name})}" id="${category.name}"
+                <a th:href="@{/{name}(name=${category.name})}" th:id="${category.name}"
                    class="nav-link px-2 text-secondary" th:text="${category.desc}"></a>
               </li>
             </ul>
