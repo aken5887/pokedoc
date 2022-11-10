@@ -104,11 +104,11 @@ function createLink() {
 
   for (var i = 0 ; i < image.length; i++) {
     codeStr += (image[i].classList.contains('selected')?'1':'0');
-
-    if(image[i].classList.contains('selected')) {
+    if(!image[i].classList.contains('selected')) {
       cnt++;
     }
   }
+
   const resultCode = encode(codeStr + '00000');
   document.getElementById('cnt').innerHTML = cnt + '/' + image.length;
   document.getElementById("code").value =  resultCode;
