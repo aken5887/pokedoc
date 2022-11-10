@@ -10,6 +10,7 @@ import com.minu.pokedoc.domain.user.User;
 import com.minu.pokedoc.domain.user.UserRepository;
 import java.time.LocalDateTime;
 import java.util.List;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -42,6 +43,13 @@ class StickerRepositoryTest {
     this.userId = userRepository.save(user).getId();
     Category category = Category.builder().name("test").build();
     this.cateogryId = categoryRepository.save(category).getId();
+  }
+
+  @AfterEach
+  void clear(){
+    stickerRepository.deleteAll();
+    userRepository.deleteAll();
+    categoryRepository.deleteAll();
   }
 
 
