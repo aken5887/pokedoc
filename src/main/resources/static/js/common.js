@@ -28,7 +28,21 @@ function addShareLinkEvent(){
   const shareBtn = document.getElementById("shareBtn");
   if(shareBtn){
     shareBtn.addEventListener('click', function(event){
-      window.navigator.clipboard.writeText(document.getElementById("shareUrl").value);
+      const shareUrl = document.getElementById("shareUrl").value;
+      if(typeof(window.navigator.clipboard) == 'undefined'){
+          const textArea = document.createElement("textarea");
+          textArea.value = shareUrl;
+          textArea.position = "fixed";
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+      }else{
+        window.navigator.clipboard.writeText(shareUrl);
+      }
+
       alert("링크가 복사되었습니다.");
     });
   }
