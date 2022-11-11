@@ -28,7 +28,7 @@
           <p class="btn btn-secondary my-2" th:if="${sticker.code} == null">❌</p>
           <a class="btn btn-warning my-2"
              th:if="${sticker.code} != null"
-             th:href="@{/pokedex/{name}(name=${sticker.categoryName}, code=${sticker.code})}">🔎보기</a>
+             th:href="@{/pokedex/{name}(name=${sticker.categoryName}, code=${sticker.code})}">🔎</a>
         </td>
       </tr>
       </tbody>
