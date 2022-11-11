@@ -53,6 +53,9 @@
                 <a th:href="@{/pokedex/{name}(name=${category.name})}" th:id="${category.name}"
                    class="nav-link px-2 text-secondary" th:text="${category.desc}"></a>
               </li>
+              <li>
+                <a href="/explorer" id="explorer" class="nav-link px-2 text-secondary">🧚둘러보기</a>
+              </li>
             </ul>
             <div class="text-end">
               <a th:if="${user} == null" href="/oauth2/authorization/google" class="btn btn-google me-2">

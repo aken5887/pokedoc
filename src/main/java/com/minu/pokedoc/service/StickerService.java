@@ -22,7 +22,6 @@ public class StickerService {
   private final StickerRepository stickerRepository;
   private final CategoryRepository categoryRepository;
   private final UserRepository userRepository;
-  private static final String DEFAULT_CODE = "00000000000000000";
 
   @Transactional
   public Long save(SessionUser sessionUser, StickerRequestDto requestDto){
@@ -66,7 +65,7 @@ public class StickerService {
      return new StickerResponseDto(sticker.get());
    }else{
      Sticker newSticker = Sticker.builder()
-         .code(DEFAULT_CODE)
+         .code(null)
          .user(user)
          .category(category)
          .build();

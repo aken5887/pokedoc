@@ -24,7 +24,7 @@ public class SecurityConfig {
     .headers().frameOptions().disable()
     .and()
       .authorizeRequests()
-      .antMatchers("/", "/css/**", "/image/**", "/js/**", "/h2-console/**", "/pokedex/**", "/hello/**").permitAll()
+      .antMatchers("/", "/css/**", "/image/**", "/js/**", "/h2-console/**", "/pokedex/**", "/hello/**", "/explorer/**").permitAll()
       .antMatchers("/api/**").hasAnyRole(Role.GENERAL.name(),Role.ADMIN.name())
       .anyRequest().authenticated()
     .and()

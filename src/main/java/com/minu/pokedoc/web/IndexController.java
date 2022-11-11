@@ -4,8 +4,12 @@ import com.minu.pokedoc.config.auth.annotation.LoadCategories;
 import com.minu.pokedoc.config.auth.annotation.LoginUser;
 import com.minu.pokedoc.config.auth.dto.SessionUser;
 import com.minu.pokedoc.domain.category.Category;
+import com.minu.pokedoc.domain.category.CategoryRepository;
 import com.minu.pokedoc.service.CategoryService;
 import com.minu.pokedoc.service.StickerService;
+import com.minu.pokedoc.service.UserService;
+import com.minu.pokedoc.web.dto.User.UserDexDto;
+import com.minu.pokedoc.web.dto.User.UserStickerDexDto;
 import com.minu.pokedoc.web.dto.category.CategoryResponseDto;
 import com.minu.pokedoc.web.dto.sticker.StickerResponseDto;
 import java.util.ArrayList;
@@ -25,6 +29,7 @@ public class IndexController {
 
   private final CategoryService categoryService;
   private final StickerService stickerService;
+  private final UserService userService;
 
   @GetMapping("/")
   public String index(Model model, HttpSession httpSession,
@@ -43,6 +48,29 @@ public class IndexController {
       model.addAttribute("code", findCode(requestCode, categoryId, user));
       return "pokedoc/"+path;
   }
+
+  @GetMapping("/explorer")
+  public String explorer(Model model, @LoginUser SessionUser user,
+      @LoadCategories ArrayList<CategoryResponseDto> categories){
+    List<UserDexDto> userDexes = userService.findAllUserDex();
+    for(UserDexDto userDex : userDexes){
+      List<UserStickerDexDto> stickerDexDtos = new ArrayList<>();
+        for(CategoryResponseDto category : categories){
+          Long categoryId = categoryService.findCategoryIdByName(category.getName());
+          StickerResponseDto sticker = stickerService.findByUserId(categoryId, userDex.getId());
+          stickerDexDtos.add(UserStickerDexDto.builder()
+                  .categoryId(categoryId)
+                  .categoryName(category.getName())
+                  .categoryDesc(category.getDesc())
+                  .code(sticker!=null?sticker.getCode():"")
+                  .build());
+        }
+      userDex.update(stickerDexDtos);
+    }
+    model.addAttribute("userDexes", userDexes);
+    return "pokedoc/explorer";
+  }
+
 
   private String findCode(String requestCode, Long categoryId, SessionUser user){
     String code = "";

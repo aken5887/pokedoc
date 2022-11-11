@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<th:block th:replace="common/header :: headerFragment('explorer')"/>
+<body>
+<main>
+  <div class="table-responsive">
+    <table class="table text-center text-white">
+      <thead>
+      <tr>
+        <th style="width: 10%;">이름</th>
+        <th style="width: 10%;">프로필</th>
+        <th th:each="category:${categories}" th:text="${category.desc}"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:if="${#lists.size(userDexes)} == 0">
+        <th th:colspan="${#lists.size(categories)+2}">사용자가 없습니다.</th>
+      </tr>
+      <tr th:each="userDex:${userDexes}">
+        <th scope="row" class="text-center">
+          <p th:text="${userDex.name}" class="my-2">사용자이름</p>
+        </th>
+        <th scope="row" class="text-center">
+          <img class="my-2" th:src="${userDex.picture}" style="width:35px;height: 35px;"/>
+        </th>
+        <td th:each="sticker:${userDex.stickers}">
+          <p class="btn btn-secondary my-2" th:if="${sticker.code} == null">도감없음❌</p>
+          <a class="btn btn-warning my-2"
+             th:if="${sticker.code} != null"
+             th:href="@{/pokedex/{name}(name=${sticker.categoryName}, code=${sticker.code})}">
+            바로가기✅</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+</body>
+<th:block th:replace="common/footer :: footerFragment"/>
+</html>
