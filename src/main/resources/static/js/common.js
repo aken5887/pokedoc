@@ -153,3 +153,43 @@ function saveSticker(){
 function afterSaveSticker(response){
   alert('저장에 성공하였습니다');
 }
+
+function showImage(scase){
+  const images = document.querySelectorAll('.image');
+  document.getElementById('reverseBtn').style.display = 'none';
+  switch(scase){
+    case 'on':
+        Array.prototype.forEach.call(images, function(image){
+          const innerDiv = image.querySelector('div');
+          if(innerDiv.classList.contains('selected')){
+            image.style.display = 'none';
+          }else{
+            image.style.display = '';
+          }
+        });
+        document.getElementById('lightOnBtn').style.display = 'none';
+        document.getElementById('lightOffBtn').style.display = '';
+      break;
+    case 'off':
+      Array.prototype.forEach.call(images, function(image){
+        const innerDiv = image.querySelector('div');
+        if(innerDiv.classList.contains('selected')){
+          image.style.display = '';
+        }else{
+          image.style.display = 'none';
+        }
+      });
+      document.getElementById('lightOnBtn').style.display = '';
+      document.getElementById('lightOffBtn').style.display = 'none';
+      break;
+    default:
+      Array.prototype.forEach.call(images, function(image){
+        const innerDiv = image.querySelector('div');
+        image.style.display = '';
+        document.getElementById('reverseBtn').style.display = '';
+        document.getElementById('lightOnBtn').style.display = '';
+        document.getElementById('lightOffBtn').style.display = '';
+      });
+      break;
+  }
+}
